@@ -1,0 +1,2 @@
+source C:/Users/kifal/esp32-perception-engine/build/bootloader/gdbinit/symbols
+source C:/Users/kifal/esp32-perception-engine/build/bootloader/gdbinit/connect
