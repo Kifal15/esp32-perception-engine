@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "esp32-perception-engine",
-    "project_version":    "1",
+    "project_version":    "5b9b73d-dirty",
     "project_path":       "C:/Users/kifal/esp32-perception-engine",
     "idf_path":           "C:/Espressif/frameworks/esp-idf-v5.5.4",
     "build_dir":          "C:/Users/kifal/esp32-perception-engine/build",
@@ -1240,7 +1240,7 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "C:/Users/kifal/esp32-perception-engine/build/esp-idf/main/libmain.a",
-            "sources": [ "C:/Users/kifal/esp32-perception-engine/main/main.c" ],
+            "sources": [ "C:/Users/kifal/esp32-perception-engine/main/main.c", "C:/Users/kifal/esp32-perception-engine/main/lightranger14_firmware.c" ],
             "include_dirs": [ "." ]
         },
         "mbedtls": {

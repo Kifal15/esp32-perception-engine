@@ -1,0 +1,570 @@
+Command: C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe C:\Espressif\frameworks\esp-idf-v5.5.4\tools/idf_monitor.py -p com6 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 C:\Users\kifal\esp32-perception-engine\build\esp32-perception-engine.elf C:\Users\kifal\esp32-perception-engine\build\bootloader\bootloader.elf --force-color -m 'C:\Espressif\python_env\idf5.5_py3.11_env\Scripts\python.exe' 'C:\Espressif\frameworks\esp-idf-v5.5.4\tools\idf.py'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6280
+load:0x40078000,len:15864
+load:0x40080400,len:3920
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v5.5.4 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Apr 26 2026 19:51:56[0m
+[0;32mI (28) boot: Multicore bootloader[0m
+[0;32mI (29) boot: chip revision: v3.1[0m
+[0;32mI (32) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (35) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (39) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (42) boot: Enabling RNG early entropy source...[0m
+[0;32mI (47) boot: Partition Table:[0m
+[0;32mI (49) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (62) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (69) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (75) boot: End of partition table[0m
+[0;32mI (79) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=0ce4ch ( 52812) map[0m
+[0;32mI (104) esp_image: segment 1: paddr=0001ce74 vaddr=3ffb0000 size=02864h ( 10340) load[0m
+[0;32mI (108) esp_image: segment 2: paddr=0001f6e0 vaddr=40080000 size=00938h (  2360) load[0m
+[0;32mI (110) esp_image: segment 3: paddr=00020020 vaddr=400d0020 size=11b48h ( 72520) map[0m
+[0;32mI (140) esp_image: segment 4: paddr=00031b70 vaddr=40080938 size=0da60h ( 55904) load[0m
+[0;32mI (162) esp_image: segment 5: paddr=0003f5d8 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (170) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (170) boot: Disabling RNG early entropy source...[0m
+[0;32mI (181) cpu_start: Multicore app[0m
+[0;32mI (189) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (189) cpu_start: Pro cpu start user code[0m
+[0;32mI (189) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (191) app_init: Application information:[0m
+[0;32mI (195) app_init: Project name:     esp32-perception-engine[0m
+[0;32mI (200) app_init: App version:      5b9b73d-dirty[0m
+[0;32mI (204) app_init: Compile time:     May  2 2026 14:44:29[0m
+[0;32mI (209) app_init: ELF file SHA256:  dbbbc3e71...[0m
+[0;32mI (214) app_init: ESP-IDF:          v5.5.4[0m
+[0;32mI (218) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (221) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (225) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (230) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (236) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (241) heap_init: At 3FFB3138 len 0002CEC8 (179 KiB): DRAM[0m
+[0;32mI (246) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (251) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (257) heap_init: At 4008E398 len 00011C68 (71 KiB): IRAM[0m
+[0;32mI (264) spi_flash: detected chip: generic[0m
+[0;32mI (266) spi_flash: flash io: dio[0m
+[0;33mW (269) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (281) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (291) main_task: Started on CPU0[0m
+[0;32mI (301) main_task: Calling app_main()[0m
+ENABLE: 0x84
+CPU READY
+Chip ID: 0x9E
+REVID:   0x01
+Uploading firmware...
+FW size: 9752 bytes
+CMD before FW: 0x01
+FW: 32 / 9752
+FW: 64 / 9752
+FW: 96 / 9752
+FW: 128 / 9752
+FW: 160 / 9752
+FW: 192 / 9752
+FW: 224 / 9752
+FW: 256 / 9752
+FW: 288 / 9752
+FW: 320 / 9752
+FW: 352 / 9752
+FW: 384 / 9752
+FW: 416 / 9752
+FW: 448 / 9752
+FW: 480 / 9752
+FW: 512 / 9752
+FW: 544 / 9752
+FW: 576 / 9752
+FW: 608 / 9752
+FW: 640 / 9752
+FW: 672 / 9752
+FW: 704 / 9752
+FW: 736 / 9752
+FW: 768 / 9752
+FW: 800 / 9752
+FW: 832 / 9752
+FW: 864 / 9752
+FW: 896 / 9752
+FW: 928 / 9752
+FW: 960 / 9752
+FW: 992 / 9752
+FW: 1024 / 9752
+FW: 1056 / 9752
+FW: 1088 / 9752
+FW: 1120 / 9752
+FW: 1152 / 9752
+FW: 1184 / 9752
+FW: 1216 / 9752
+FW: 1248 / 9752
+FW: 1280 / 9752
+FW: 1312 / 9752
+FW: 1344 / 9752
+FW: 1376 / 9752
+FW: 1408 / 9752
+FW: 1440 / 9752
+FW: 1472 / 9752
+FW: 1504 / 9752
+FW: 1536 / 9752
+FW: 1568 / 9752
+FW: 1600 / 9752
+FW: 1632 / 9752
+FW: 1664 / 9752
+FW: 1696 / 9752
+FW: 1728 / 9752
+FW: 1760 / 9752
+FW: 1792 / 9752
+FW: 1824 / 9752
+FW: 1856 / 9752
+FW: 1888 / 9752
+FW: 1920 / 9752
+FW: 1952 / 9752
+FW: 1984 / 9752
+FW: 2016 / 9752
+FW: 2048 / 9752
+FW: 2080 / 9752
+FW: 2112 / 9752
+FW: 2144 / 9752
+FW: 2176 / 9752
+FW: 2208 / 9752
+FW: 2240 / 9752
+FW: 2272 / 9752
+FW: 2304 / 9752
+FW: 2336 / 9752
+FW: 2368 / 9752
+FW: 2400 / 9752
+FW: 2432 / 9752
+FW: 2464 / 9752
+FW: 2496 / 9752
+FW: 2528 / 9752
+FW: 2560 / 9752
+FW: 2592 / 9752
+FW: 2624 / 9752
+FW: 2656 / 9752
+FW: 2688 / 9752
+FW: 2720 / 9752
+FW: 2752 / 9752
+FW: 2784 / 9752
+FW: 2816 / 9752
+FW: 2848 / 9752
+FW: 2880 / 9752
+FW: 2912 / 9752
+FW: 2944 / 9752
+FW: 2976 / 9752
+FW: 3008 / 9752
+FW: 3040 / 9752
+FW: 3072 / 9752
+FW: 3104 / 9752
+FW: 3136 / 9752
+FW: 3168 / 9752
+FW: 3200 / 9752
+FW: 3232 / 9752
+FW: 3264 / 9752
+FW: 3296 / 9752
+FW: 3328 / 9752
+FW: 3360 / 9752
+FW: 3392 / 9752
+FW: 3424 / 9752
+FW: 3456 / 9752
+FW: 3488 / 9752
+FW: 3520 / 9752
+FW: 3552 / 9752
+FW: 3584 / 9752
+FW: 3616 / 9752
+FW: 3648 / 9752
+FW: 3680 / 9752
+FW: 3712 / 9752
+FW: 3744 / 9752
+FW: 3776 / 9752
+FW: 3808 / 9752
+FW: 3840 / 9752
+FW: 3872 / 9752
+FW: 3904 / 9752
+FW: 3936 / 9752
+FW: 3968 / 9752
+FW: 4000 / 9752
+FW: 4032 / 9752
+FW: 4064 / 9752
+FW: 4096 / 9752
+FW: 4128 / 9752
+FW: 4160 / 9752
+FW: 4192 / 9752
+FW: 4224 / 9752
+FW: 4256 / 9752
+FW: 4288 / 9752
+FW: 4320 / 9752
+FW: 4352 / 9752
+FW: 4384 / 9752
+FW: 4416 / 9752
+FW: 4448 / 9752
+FW: 4480 / 9752
+FW: 4512 / 9752
+FW: 4544 / 9752
+FW: 4576 / 9752
+FW: 4608 / 9752
+FW: 4640 / 9752
+FW: 4672 / 9752
+FW: 4704 / 9752
+FW: 4736 / 9752
+FW: 4768 / 9752
+FW: 4800 / 9752
+FW: 4832 / 9752
+FW: 4864 / 9752
+FW: 4896 / 9752
+FW: 4928 / 9752
+FW: 4960 / 9752
+FW: 4992 / 9752
+FW: 5024 / 9752
+FW: 5056 / 9752
+FW: 5088 / 9752
+FW: 5120 / 9752
+FW: 5152 / 9752
+FW: 5184 / 9752
+FW: 5216 / 9752
+FW: 5248 / 9752
+FW: 5280 / 9752
+FW: 5312 / 9752
+FW: 5344 / 9752
+FW: 5376 / 9752
+FW: 5408 / 9752
+FW: 5440 / 9752
+FW: 5472 / 9752
+FW: 5504 / 9752
+FW: 5536 / 9752
+FW: 5568 / 9752
+FW: 5600 / 9752
+FW: 5632 / 9752
+FW: 5664 / 9752
+FW: 5696 / 9752
+FW: 5728 / 9752
+FW: 5760 / 9752
+FW: 5792 / 9752
+FW: 5824 / 9752
+FW: 5856 / 9752
+FW: 5888 / 9752
+FW: 5920 / 9752
+FW: 5952 / 9752
+FW: 5984 / 9752
+FW: 6016 / 9752
+FW: 6048 / 9752
+FW: 6080 / 9752
+FW: 6112 / 9752
+FW: 6144 / 9752
+FW: 6176 / 9752
+FW: 6208 / 9752
+FW: 6240 / 9752
+FW: 6272 / 9752
+FW: 6304 / 9752
+FW: 6336 / 9752
+FW: 6368 / 9752
+FW: 6400 / 9752
+FW: 6432 / 9752
+FW: 6464 / 9752
+FW: 6496 / 9752
+FW: 6528 / 9752
+FW: 6560 / 9752
+FW: 6592 / 9752
+FW: 6624 / 9752
+FW: 6656 / 9752
+FW: 6688 / 9752
+FW: 6720 / 9752
+FW: 6752 / 9752
+FW: 6784 / 9752
+FW: 6816 / 9752
+FW: 6848 / 9752
+FW: 6880 / 9752
+FW: 6912 / 9752
+FW: 6944 / 9752
+FW: 6976 / 9752
+FW: 7008 / 9752
+FW: 7040 / 9752
+FW: 7072 / 9752
+FW: 7104 / 9752
+FW: 7136 / 9752
+FW: 7168 / 9752
+FW: 7200 / 9752
+FW: 7232 / 9752
+FW: 7264 / 9752
+FW: 7296 / 9752
+FW: 7328 / 9752
+FW: 7360 / 9752
+FW: 7392 / 9752
+FW: 7424 / 9752
+FW: 7456 / 9752
+FW: 7488 / 9752
+FW: 7520 / 9752
+FW: 7552 / 9752
+FW: 7584 / 9752
+FW: 7616 / 9752
+FW: 7648 / 9752
+FW: 7680 / 9752
+FW: 7712 / 9752
+FW: 7744 / 9752
+FW: 7776 / 9752
+FW: 7808 / 9752
+FW: 7840 / 9752
+FW: 7872 / 9752
+FW: 7904 / 9752
+FW: 7936 / 9752
+FW: 7968 / 9752
+FW: 8000 / 9752
+FW: 8032 / 9752
+FW: 8064 / 9752
+FW: 8096 / 9752
+FW: 8128 / 9752
+FW: 8160 / 9752
+FW: 8192 / 9752
+FW: 8224 / 9752
+FW: 8256 / 9752
+FW: 8288 / 9752
+FW: 8320 / 9752
+FW: 8352 / 9752
+FW: 8384 / 9752
+FW: 8416 / 9752
+FW: 8448 / 9752
+FW: 8480 / 9752
+FW: 8512 / 9752
+FW: 8544 / 9752
+FW: 8576 / 9752
+FW: 8608 / 9752
+FW: 8640 / 9752
+FW: 8672 / 9752
+FW: 8704 / 9752
+FW: 8736 / 9752
+FW: 8768 / 9752
+FW: 8800 / 9752
+FW: 8832 / 9752
+FW: 8864 / 9752
+FW: 8896 / 9752
+FW: 8928 / 9752
+FW: 8960 / 9752
+FW: 8992 / 9752
+FW: 9024 / 9752
+FW: 9056 / 9752
+FW: 9088 / 9752
+FW: 9120 / 9752
+FW: 9152 / 9752
+FW: 9184 / 9752
+FW: 9216 / 9752
+FW: 9248 / 9752
+FW: 9280 / 9752
+FW: 9312 / 9752
+FW: 9344 / 9752
+FW: 9376 / 9752
+FW: 9408 / 9752
+FW: 9440 / 9752
+FW: 9472 / 9752
+FW: 9504 / 9752
+FW: 9536 / 9752
+FW: 9568 / 9752
+FW: 9600 / 9752
+FW: 9632 / 9752
+FW: 9664 / 9752
+FW: 9696 / 9752
+FW: 9728 / 9752
+FW: 9752 / 9752
+Firmware upload done
+Starting app...
+APP_ID: 0x80
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
+CMD_STAT: 0x01
