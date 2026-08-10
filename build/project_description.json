@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "esp32-perception-engine",
-    "project_version":    "f44bf3f-dirty",
+    "project_version":    "9dcfdd0-dirty",
     "project_path":       "C:/Users/kifal/esp32-perception-engine",
     "idf_path":           "C:/Espressif/frameworks/esp-idf-v5.5.4",
     "build_dir":          "C:/Users/kifal/esp32-perception-engine/build",

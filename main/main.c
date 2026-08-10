@@ -10,6 +10,9 @@
 #define GPIO_NUM_SCL 22
 #define I2C_FREQUENCY 100000 
 #define TOF_ADDRESS 0x41 
+#define REG_ID 0xE3 
+#define CHIP_ID 0x9E
+
 
 static const char *TAG = "MAIN";
 
@@ -35,7 +38,7 @@ i2c_new_master_bus(&tmf_bus_cfg , &tmf_bus);
 
 
 i2c_device_config_t tmf_device_cfg = { 
-    
+
     .dev_addr_length = I2C_ADDR_BIT_LEN_7 ,
     .device_address = TOF_ADDRESS ,
     .scl_speed_hz  = I2C_FREQUENCY ,
@@ -60,7 +63,27 @@ else {
 
 }
 
+uint8_t send_reg =REG_ID ; 
+uint8_t recieve_reg = 0  ;
+ 
+ err =  i2c_master_transmit_receive(tmf_device, &send_reg ,1 ,&recieve_reg , 1 , 100 );
+if (err ==ESP_OK ){
 
+    ESP_LOGI(TAG , "Sucessfully transmitted %02X", recieve_reg);
+
+        if (recieve_reg == CHIP_ID){
+                ESP_LOGI(TAG , "Sucessfully transmitted and the ID is  %02X", recieve_reg);
+            
+        }else{
+
+            ESP_LOGE(TAG,"This returned incorrect chip ID");
+        }
+
+} else{
+
+    ESP_LOGE(TAG , "Not Transmitted sadly");
+
+}
 
 ESP_LOGI(TAG, "This is me here");
 
