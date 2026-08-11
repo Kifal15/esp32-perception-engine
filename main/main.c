@@ -17,6 +17,12 @@
 static const char *TAG = "MAIN";
 
 
+esp_err_t read_reg(i2c_master_dev_handle_t dev ,uint8_t reg , uint8_t  *value ){
+
+    return i2c_master_transmit_receive(dev , &reg , 1 , value ,1 ,100 ); 
+
+}
+
 
 void app_main(void){
 i2c_master_bus_handle_t tmf_bus ; 
@@ -66,7 +72,7 @@ else {
 uint8_t send_reg =REG_ID ; 
 uint8_t recieve_reg = 0  ;
  
- err =  i2c_master_transmit_receive(tmf_device, &send_reg ,1 ,&recieve_reg , 1 , 100 );
+err =  read_reg(tmf_device, send_reg  ,&recieve_reg  );
 if (err ==ESP_OK ){
 
     ESP_LOGI(TAG , "Sucessfully transmitted %02X", recieve_reg);
