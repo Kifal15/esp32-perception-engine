@@ -96,9 +96,32 @@ esp_err_t write_regs(i2c_master_dev_handle_t dev , uint8_t reg ,  const uint8_t 
         return i2c_master_transmit(dev , buf , len+1 , 100); 
     }
 
+esp_err_t sensor_reset(void){
+
+gpio_config_t enable_config = {
+
+    .pin_bit_mask = 1ULL << PIN_EN ,
+    .mode = GPIO_MODE_OUTPUT ,
+    .intr_type = GPIO_INTR_DISABLE ,
+    .pull_up_en = 0 ,
+    .pull_down_en = 0 ,
+};
+
+
+gpio_config(&enable_config);
+
+gpio_set_level(PIN_EN , 0 );
+vTaskDelay(pdMS_TO_TICKS(10));
+gpio_set_level(PIN_EN , 1 );
+vTaskDelay(pdMS_TO_TICKS(10));
+
+return ESP_OK ;
+}
 
 
 void app_main(void){
+
+    sensor_reset();
 i2c_master_bus_handle_t tmf_bus ; 
 
 i2c_master_bus_config_t tmf_bus_cfg = {
