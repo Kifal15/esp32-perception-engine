@@ -25,7 +25,8 @@
 #define BL_CMD_W_FIFO_BOTH 69 
 #define REG_FIFO 0xFF
 #define PIN_EN 18
-#define PIN_INT 19 
+#define PIN_INT 19
+#define BL_CMD_START_RAM_APP 22
 
 static const char *TAG = "MAIN";
 
@@ -295,7 +296,66 @@ ESP_LOGE(TAG , "Error sending array");
 
 }
 
+uint32_t offset = 0 ; 
 
+
+while (offset<fw_size){
+
+    size_t chunk = 128 ; 
+
+
+    if (offset +chunk >fw_size)
+{
+chunk = fw_size - offset ;
+}
+
+    err = write_regs(tmf_device , REG_FIFO , &lightranger14_image[offset] , chunk );
+
+    if (err!= ESP_OK){
+
+        ESP_LOGE(TAG , " The upload died here at this offset %lu  " , offset) ;
+        break ;
+
+    }
+
+    offset += chunk ; 
+
+
+
+
+}
+
+
+ESP_LOGI(TAG, "uploaded %lu bytes", offset);
+err = send_command(tmf_device , BL_CMD_START_RAM_APP);
+
+if (err != ESP_OK){
+
+    ESP_LOGE (TAG, " BL_CMD_START_RAM_APP NOT SENT PROPERLY ");
+}
+
+for (uint8_t i = 0 ; i < 100 ; i++ ){
+
+
+err = read_reg(tmf_device , REG_APP_ID , &app_id) ;
+
+if (err == ESP_OK ){
+    ESP_LOGI (TAG , " APP ID RETRIVED IS %02x " , app_id ) ;
+}
+
+else{
+
+ESP_LOGE(TAG , " APP ID IS NOT SET YET / NOT RETRIVED YET ");
+
+
+}
+
+vTaskDelay(pdMS_TO_TICKS(10));
+if (app_id == 0x01){
+    break;
+}
+
+}
 
 
 
