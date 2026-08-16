@@ -4,6 +4,8 @@
 #include "esp_err.h"
 #include "driver/i2c_master.h"
 #include <stdbool.h>
+#include "lightranger14_firmware.h"
+#include <string.h>
 
 #define I2C_PORT_NUM 0 
 #define GPIO_NUM_SDA 21
@@ -15,6 +17,13 @@
 #define REG_ENABLE 0xF8
 #define ENABLE_PON (1<<2)
 #define ENABLE_CPU_READY ( 1<<7 )
+#define REG_CMD_STAT 0x08
+#define REG_APP_ID 0x00
+#define BL_CMD_SPI_OFF 32 
+#define APP_ID_BOOTLOADER 0X80 // WILL TELL U ABOUT THE FIRMWARE IT IS RUNNING 
+#define BL_CMD_W_FIFO_BOTH 69 
+#define REG_FIFO 0xFF
+
 
 static const char *TAG = "MAIN";
 
@@ -32,6 +41,60 @@ esp_err_t write_reg( i2c_master_dev_handle_t dev , uint8_t reg , uint8_t value )
 
 }
 
+esp_err_t send_command(i2c_master_dev_handle_t dev , uint8_t cmd ) // this is write_reg but with the wait lo
+{
+uint8_t stat = 0 ;
+esp_err_t err    = write_reg(dev , REG_CMD_STAT , cmd );
+
+if (err != ESP_OK) {
+
+    ESP_LOGE(TAG , "Write unsucessful please try again");
+    return err ; 
+}
+
+
+for ( int i = 0 ; i<=100 ; i++){
+
+
+    err = read_reg (dev, REG_CMD_STAT ,&stat) ;
+    if (err!= ESP_OK)
+    {
+        
+        return err ;
+      
+    
+    }
+        if (stat==0){
+            return ESP_OK ;
+
+        }
+
+vTaskDelay(pdMS_TO_TICKS(1));
+    
+}
+
+return ESP_ERR_TIMEOUT ;
+
+
+}
+
+
+esp_err_t write_regs(i2c_master_dev_handle_t dev , uint8_t reg ,  const uint8_t *data, size_t len) 
+
+    {
+
+        if (len>128){
+           return ESP_ERR_INVALID_SIZE ; 
+        }
+        uint8_t buf[129];
+
+        buf[0] = reg ;
+        memcpy(&buf[1], data , len   ) ;
+
+        return i2c_master_transmit(dev , buf , len+1 , 100); 
+    }
+
+
 
 void app_main(void){
 i2c_master_bus_handle_t tmf_bus ; 
@@ -46,6 +109,7 @@ i2c_master_bus_config_t tmf_bus_cfg = {
     .clk_source = I2C_CLK_SRC_DEFAULT ,
 
 } ; 
+
 
 
 
@@ -80,7 +144,8 @@ else {
 
 uint8_t send_reg =REG_ID ; 
 uint8_t recieve_reg = 0  ;
- 
+
+
 err =  read_reg(tmf_device, send_reg  ,&recieve_reg  );
 if (err ==ESP_OK ){
 
@@ -143,6 +208,71 @@ else{
 
     ESP_LOGE(TAG, "Timeout Error");
 }
+
+
+err = send_command(tmf_device , BL_CMD_SPI_OFF );
+if (err == ESP_OK){
+ESP_LOGI(TAG,"SPI SUCESSFULLY DISABLED");
+}
+else{
+    ESP_LOGE(TAG , "SPI NOT DISABLED");
+}
+uint8_t app_id = 0 ; 
+err = read_reg(tmf_device,REG_APP_ID ,&app_id);
+
+
+if (err== ESP_OK){
+
+    ESP_LOGI(TAG , "App ID was read ");
+ESP_LOGI(TAG," THE APP ID IS %02X" ,app_id);
+
+
+}
+
+uint32_t fw_size = LIGHTRANGER14_IMAGE_FINISH - LIGHTRANGER14_IMAGE_START ;
+uint32_t fw_words = (fw_size+3)/4 ;
+
+uint8_t sending_array [8] = { 
+
+    BL_CMD_W_FIFO_BOTH , 
+    6 , 
+    LIGHTRANGER14_IMAGE_START >> 0 & 0xFF,
+    LIGHTRANGER14_IMAGE_START >> 8 & 0xFF,
+    LIGHTRANGER14_IMAGE_START >> 16 & 0xFF,
+    LIGHTRANGER14_IMAGE_START >> 24 & 0xFF,
+    fw_words >> 0 & 0xFF , 
+    fw_words >> 8 & 0xFF , 
+
+};
+
+ESP_LOG_BUFFER_HEX(TAG , sending_array , 8 );
+err = write_regs(tmf_device , REG_CMD_STAT , sending_array , 8 ); 
+
+if (err  == ESP_OK){
+
+ESP_LOGI(TAG , "Array was sent ok here is the response ");
+uint8_t stat = 0 ;
+for (uint8_t i = 0 ; i< 100 ; i++){
+    err = read_reg(tmf_device , REG_CMD_STAT , &stat) ;
+    ESP_LOGI(TAG , " Here is the REG_CMD_STAT , Status of the CPU  %02x ", stat);
+    
+
+vTaskDelay(pdMS_TO_TICKS(1));
+    if (stat==0){
+        ESP_LOGI(TAG,"FOUND 0 ");
+        break ;
+    }
+}
+}
+else {
+
+ESP_LOGE(TAG , "Error sending array"); 
+
+}
+
+
+
+
 
 while (1){
 
