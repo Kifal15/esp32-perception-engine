@@ -6,6 +6,7 @@
 #include <stdbool.h>
 #include "lightranger14_firmware.h"
 #include <string.h>
+#include <driver/gpio.h> 
 
 #define I2C_PORT_NUM 0 
 #define GPIO_NUM_SDA 21
@@ -23,7 +24,8 @@
 #define APP_ID_BOOTLOADER 0X80 // WILL TELL U ABOUT THE FIRMWARE IT IS RUNNING 
 #define BL_CMD_W_FIFO_BOTH 69 
 #define REG_FIFO 0xFF
-
+#define PIN_EN 18
+#define PIN_INT 19 
 
 static const char *TAG = "MAIN";
 
